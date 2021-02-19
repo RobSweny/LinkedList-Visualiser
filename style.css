@@ -1,0 +1,27 @@
+.circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-left: 25px;
+    border-radius: 50%;
+    font-size: 35px;
+    color: rgb(53, 53, 53);
+    text-align: center;
+    padding-top: 25px;
+    vertical-align: middle;
+    background: rgb(255, 192, 99);
+    transition: all .5s linear;
+}
+
+.arrow-right {
+    height: 10px;
+    width: 5px;
+    margin-left: 10px;
+    margin-top: 45px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}

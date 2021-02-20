@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LinkedList Visualiser</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js"></script> 
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="header_container" style="height: 75px; position:absolute; width: 550px; background-color: rgb(62, 116, 116);">
+            <h2 style="margin-left:15px; color: rgb(253, 243, 227);">Linked List Visualiser</h2>
+        </div>
+        <div id="circle_container" style="display: flex; padding-top: 100px; height: 400px; width: 550px; background-color: rgb(234, 253, 253);">
+            <div id="circle0" class="circle">3</div>
+        </div>
+        <div id="first_button_container" style="width: 550px; display: flex; align-items: center; background-color: rgb(243, 243, 231);">
+            <div id="set_button_container" style="margin: 5px;">
+                <button type="button" onclick="setSubmit();" style="margin: 5px">Set</button> 
+                <input type="text" id="set_data" placeholder="data" name="data" style="display: flex; margin: 5px;"> 
+                <input type="text" id="set_index" placeholder="index" name="index" style="display: flex; margin: 5px;"> 
+            </div>
+            <div id="insert_button_container" style="margin: 5px;">
+                <button type="button" onclick="insertSubmit();" style="margin: 5px">Insert</button> 
+                <input type="text" id="insert_data" placeholder="data" name="data" style="display: flex; margin: 5px;"> 
+                <input type="text" id="insert_index" placeholder="index" name="index" style="display: flex; margin: 5px;"> 
+            </div>
+            <div id="add_button_container" style="margin: 5px; margin-top: -25px;">
+                <button type="button" onclick="addSubmit();" style="margin: 5px">Add</button> 
+                <input type="text" id="add_data" placeholder="data" name="data" style="display: flex; margin: 5px;"> 
+            </div>
+        </div>
+        <div id="second_button_container" style="width: 550px; display: flex; align-items: center; background-color: rgb(223, 223, 207);">
+            <div id="remove_button_container" style="margin: 5px;">
+                <button type="button" onclick="removeSubmit();" style="margin: 5px">Remove</button> 
+                <input type="text" id="remove_data" placeholder="data" name="data" style="display: flex; margin: 5px;"> 
+                <input type="text" id="remove_index" placeholder="index" name="index" style="display: flex; margin: 5px;"> 
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </body>
+</html>

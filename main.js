@@ -1,4 +1,6 @@
 counter = 1;
+var removedNodes = [];
+
 // function onload(){
 //     // Add initial node
 //     var div = document.createElement("div");
@@ -32,11 +34,26 @@ function addNode(){
 }
 
 function setNode(){
-    document.getElementById('circle' + set_index.value).innerHTML = set_data.value;
+    var nonRemovedId = 'circle' + set_index.value;
+    var selectedNode = document.getElementById('circle' + nonRemovedId)
+    var circleVal = parseInt(set_index.value)
+    var i = 0
+    if (removedNodes.length > 0){
+        for (i = 0; i < removedNodes.length; i++) {
+            if (removedNodes.includes('circle' + parseInt(set_index.value))){
+                circleVal = circleVal + 1
+                nonRemovedId = 'circle' + circleVal
+            }
+        } 
+    }
+    selectedNode = document.getElementById(nonRemovedId)
+    selectedNode.innerHTML = set_data.value;
 }
 
 function removeNode(){
-    document.getElementById('circle' + remove_index.value).style.backgroundColor = "#FA8072";
+    var selectedNode = document.getElementById('circle' + remove_index.value)
+    selectedNode.style.backgroundColor = "#FA8072";
+    removedNodes.push(selectedNode.id);
 
 }
 
@@ -53,9 +70,11 @@ function loopNodes(method){
         return new Promise(resolve => {
             for (let i=0, max=loop; i < loop; i++) {
                 if(childDivs[i].innerHTML != undefined && childDivs[i].innerHTML != ""){
-                    setTimeout(function timer() {
-                        animateNode(childDivs[i].id)
-                    }, i * 200);
+                    if (!removedNodes.includes(childDivs[i].id)){
+                        setTimeout(function timer() {
+                            animateNode(childDivs[i].id)
+                        }, i * 200);
+                    }
                 }
             }
             // 

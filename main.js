@@ -35,10 +35,17 @@ function setNode(){
     document.getElementById('circle' + set_index.value).innerHTML = set_data.value;
 }
 
+function removeNode(){
+    document.getElementById('circle' + remove_index.value).style.backgroundColor = "#FA8072";
+
+}
+
 function loopNodes(method){
     var childDivs = document.getElementById('circle_container').childNodes;
     if (method == 'set'){
         loop = parseInt(set_index.value) * 3 - 2;
+    } else if (method == 'remove'){
+        loop = parseInt(remove_index.value) * 3 - 1;
     } else {
         loop = childDivs.length;
     }
@@ -69,12 +76,13 @@ function loopNodes(method){
         if (method == 'set'){
             setNode()
         }
+
+        if (method == 'remove'){
+            removeNode()
+        }
     }
 
     load().then(result => make());
-
-
-
 }
 
 function addArrow(){
@@ -104,8 +112,9 @@ function setSubmit(){
     } else {
         swal("Unable to find index: " + set_index.value);
     }
-
 }
+
+
 
 function animateNode(childNode){
     var circle = ""
@@ -154,11 +163,18 @@ function addSubmit(){
 }
 
 function removeSubmit(){
-    var remove_data = document.getElementById('remove_data');
     var remove_index = document.getElementById('remove_index');
-    if(remove_data.value == "" || remove_index.value == ""){
-        swal("Enter a value and index to remove");
-    } else if(remove_data.value < 0 || remove_index.value < 0 ){
+    var indexCircle = document.getElementById( "circle" + remove_index.value);
+    if(remove_index.value < 0 ){
         swal("Entered numbers must be postitive");
     } 
+    if (remove_index.value > counter - 1){
+        swal("Elements in array:  " + counter);
+    }
+
+    if(indexCircle){
+        loopNodes('remove') 
+    } else {
+        swal("Unable to find index: " + remove_index.value);
+    }
 }

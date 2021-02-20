@@ -25,3 +25,21 @@
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
+
+.head_square {
+    height: 20px;
+    width: 20px;
+    background-color: MediumTurquoise;
+}
+
+.node_square {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(252, 192, 103);
+}
+
+.removed_square {
+    height: 20px;
+    width: 20px;
+    background-color: #FA8072;
+}

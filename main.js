@@ -34,33 +34,28 @@ function addNode(){
 }
 
 function setNode(){
-    var nonRemovedId = 'circle' + set_index.value;
-    var selectedNode = document.getElementById('circle' + nonRemovedId)
     var circleVal = parseInt(set_index.value)
     var i = 0
     if (removedNodes.length > 0){
         for (i = 0; i < removedNodes.length; i++) {
             if (removedNodes.includes('circle' + parseInt(set_index.value))){
-                circleVal = circleVal + 1
-                nonRemovedId = 'circle' + circleVal
+                circleVal += 1;
             }
-        } 
+        }
     }
-    selectedNode = document.getElementById(nonRemovedId)
-    selectedNode.innerHTML = set_data.value;
+    document.getElementById('circle' + circleVal).innerHTML = set_data.value
 }
 
 function removeNode(){
     var selectedNode = document.getElementById('circle' + remove_index.value)
     selectedNode.style.backgroundColor = "#FA8072";
     removedNodes.push(selectedNode.id);
-
 }
 
 function loopNodes(method){
     var childDivs = document.getElementById('circle_container').childNodes;
     if (method == 'set'){
-        loop = parseInt(set_index.value) * 3 - 2;
+        loop = parseInt(set_index.value) * 3;
     } else if (method == 'remove'){
         loop = parseInt(remove_index.value) * 3 - 1;
     } else {
@@ -117,16 +112,20 @@ function setSubmit(){
     var set_data = document.getElementById('set_data');
     var set_index = document.getElementById('set_index');
     var indexCircle = document.getElementById( "circle" + set_index.value);
+    triggered = false
     if(set_data.value === "" || set_index.value === ""){
         swal("Set uses both data and index");
+        triggered = true
     } else if(set_data.value < 0 || set_index.value < 0 ){
         swal("Entered numbers must be postitive");
+        triggered = true
     } 
     if (set_index.value > counter - 1){
         swal("Elements in array:  " + counter);
+        triggered = true
     }
 
-    if(indexCircle){
+    if(indexCircle && !triggered){
         loopNodes('set') 
     } else {
         swal("Unable to find index: " + set_index.value);
@@ -184,14 +183,16 @@ function addSubmit(){
 function removeSubmit(){
     var remove_index = document.getElementById('remove_index');
     var indexCircle = document.getElementById( "circle" + remove_index.value);
+    triggered = false
     if(remove_index.value < 0 ){
-        swal("Entered numbers must be postitive");
-    } 
-    if (remove_index.value > counter - 1){
-        swal("Elements in array:  " + counter);
+        swal("Entered numbers must be postitive")
+        triggered = true
+    } else if (remove_index.value > counter - 1){
+        swal("Elements in array:  " + counter)
+        triggered = true
     }
-
-    if(indexCircle){
+    
+    if(indexCircle && !triggered){
         loopNodes('remove') 
     } else {
         swal("Unable to find index: " + remove_index.value);

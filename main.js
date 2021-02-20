@@ -51,7 +51,7 @@ function loopNodes(method){
                     }, i * 200);
                 }
             }
-
+            // 
             var millisecondsToWait = 500 * counter;
             setTimeout(function() {
                 resolve()

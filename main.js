@@ -50,6 +50,19 @@ function removeNode(){
     var selectedNode = document.getElementById('circle' + remove_index.value)
     selectedNode.style.backgroundColor = "#FA8072";
     removedNodes.push(selectedNode.id);
+    counter -= 1
+    if(remove_index.value === "0"){
+        var nextNode = document.getElementById('circle' + (parseInt(remove_index.value) + 1))
+        var childDivs = document.getElementById('circle_container').childNodes;
+
+        for (let i=0, max=childDivs.length; i < loop; i++) {
+            if(childDivs[i].innerHTML != undefined && childDivs[i].innerHTML != ""){
+                if (!removedNodes.includes(childDivs[i].id)){
+                    nextNode.style.backgroundColor = "#48d1cc";
+                }
+            }
+        }
+    }
 }
 
 function loopNodes(method){
